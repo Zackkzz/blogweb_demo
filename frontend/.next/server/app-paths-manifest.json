@@ -4,10 +4,10 @@
   "/api/auth/verify/route": "app/api/auth/verify/route.js",
   "/api/content/route": "app/api/content/route.js",
   "/api/auth/login/route": "app/api/auth/login/route.js",
-  "/about/page": "app/about/page.js",
   "/admin/page": "app/admin/page.js",
-  "/blog/page": "app/blog/page.js",
-  "/admin/profile/page": "app/admin/profile/page.js",
+  "/about/page": "app/about/page.js",
   "/projects/page": "app/projects/page.js",
-  "/page": "app/page.js"
+  "/page": "app/page.js",
+  "/admin/profile/page": "app/admin/profile/page.js",
+  "/blog/page": "app/blog/page.js"
 }

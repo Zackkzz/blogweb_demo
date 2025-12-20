@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server';
-import db from '../../../../../backend/db';
+import { getDb } from '../../../../../backend/db';
 import bcrypt from 'bcryptjs';
 import jwt from 'jsonwebtoken';
 
@@ -12,7 +12,7 @@ export async function POST(request: NextRequest) {
     if (!token) return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
 
     const decoded: any = jwt.verify(token, JWT_SECRET);
-    const conn = await db;
+    const conn = await getDb();
 
     const [rows] = await conn.execute('SELECT * FROM zack WHERE id = ?', [decoded.id]);
     const user = (rows as any[])[0];
