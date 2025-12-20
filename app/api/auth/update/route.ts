@@ -1,9 +1,9 @@
 import { NextRequest, NextResponse } from 'next/server';
-import db from '../../../../lib/db';
+import db from '../../../../../backend/db';
 import bcrypt from 'bcryptjs';
 import jwt from 'jsonwebtoken';
 
-const JWT_SECRET = 'your-secret-key';
+const JWT_SECRET = process.env.JWT_SECRET || 'change-me-in-env';
 
 export async function POST(request: NextRequest) {
   try {
