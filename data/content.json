@@ -1,0 +1,24 @@
+{
+  "home": {
+    "title": "Welcome to My Personal Website",
+    "content": "This is the home page content. You can edit this from the backend."
+  },
+  "about": {
+    "title": "About Me",
+    "content": "I am a passionate developer with experience in various technologies. This content can be edited."
+  },
+  "projects": [
+    {
+      "title": "Project 1",
+      "description": "A sample project description.",
+      "link": "https://example.com"
+    }
+  ],
+  "blog": [
+    {
+      "title": "First Blog Post",
+      "content": "This is the content of my first blog post. Editable via backend.",
+      "date": "2025-12-20"
+    }
+  ]
+}
