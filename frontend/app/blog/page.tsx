@@ -7,8 +7,23 @@ export default function Blog() {
 
   useEffect(() => {
     fetch('/api/content')
-      .then(res => res.json())
-      .then(data => setPosts(data.blog))
+      .then(res => {
+        if (!res.ok) {
+          throw new Error('Failed to fetch content')
+        }
+        return res.json()
+      })
+      .then(data => {
+        if (data && Array.isArray(data.blog)) {
+          setPosts(data.blog)
+        } else {
+          setPosts([])
+        }
+      })
+      .catch(error => {
+        console.error('Error fetching content:', error)
+        setPosts([])
+      })
   }, [])
 
   return (

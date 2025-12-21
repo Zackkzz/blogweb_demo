@@ -7,8 +7,23 @@ export default function Home() {
 
   useEffect(() => {
     fetch('/api/content')
-      .then(res => res.json())
-      .then(data => setContent(data.home))
+      .then(res => {
+        if (!res.ok) {
+          throw new Error('Failed to fetch content')
+        }
+        return res.json()
+      })
+      .then(data => {
+        if (data && data.home) {
+          setContent(data.home)
+        } else {
+          setContent({ title: 'Welcome', content: 'Loading...' })
+        }
+      })
+      .catch(error => {
+        console.error('Error fetching content:', error)
+        setContent({ title: 'Welcome to My Website', content: 'Content is loading...' })
+      })
   }, [])
 
   return (

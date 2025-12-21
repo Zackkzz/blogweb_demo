@@ -7,8 +7,23 @@ export default function Projects() {
 
   useEffect(() => {
     fetch('/api/content')
-      .then(res => res.json())
-      .then(data => setProjects(data.projects))
+      .then(res => {
+        if (!res.ok) {
+          throw new Error('Failed to fetch content')
+        }
+        return res.json()
+      })
+      .then(data => {
+        if (data && Array.isArray(data.projects)) {
+          setProjects(data.projects)
+        } else {
+          setProjects([])
+        }
+      })
+      .catch(error => {
+        console.error('Error fetching content:', error)
+        setProjects([])
+      })
   }, [])
 
   return (

@@ -7,8 +7,23 @@ export default function About() {
 
   useEffect(() => {
     fetch('/api/content')
-      .then(res => res.json())
-      .then(data => setContent(data.about))
+      .then(res => {
+        if (!res.ok) {
+          throw new Error('Failed to fetch content')
+        }
+        return res.json()
+      })
+      .then(data => {
+        if (data && data.about) {
+          setContent(data.about)
+        } else {
+          setContent({ title: 'About Me', content: 'Loading...' })
+        }
+      })
+      .catch(error => {
+        console.error('Error fetching content:', error)
+        setContent({ title: 'About Me', content: 'Content is loading...' })
+      })
   }, [])
 
   return (
