@@ -3,7 +3,7 @@
 ## 📋 Deployment Steps
 
 ### Step 1: Prepare Your GitHub Repository
-✅ Your code is already pushed to GitHub at: `https://github.com/LinghuCh0ng/blogWeb.git`
+✅ Your code is already pushed to GitHub at: `https://github.com/LinghuCh0ng/blog_noDB.git`
 
 ### Step 2: Create a Netlify Account
 1. Go to [https://www.netlify.com](https://www.netlify.com)
@@ -12,7 +12,7 @@
 ### Step 3: Create a New Site from GitHub
 1. In Netlify dashboard, click **"Add new site"** → **"Import an existing project"**
 2. Choose **"Deploy with GitHub"** and authorize Netlify to access your GitHub account
-3. Select your repository: `LinghuCh0ng/blogWeb`
+3. Select your repository: `LinghuCh0ng/blog_noDB`
 4. Netlify will automatically detect the `netlify.toml` configuration
 
 ### Step 4: Configure Build Settings
@@ -26,23 +26,16 @@ If not auto-detected, manually set:
 - **Build command**: `cd frontend && npm install && npm run build`
 - **Publish directory**: `frontend/.next`
 
-### Step 5: Set Environment Variables
+### Step 5: Set Environment Variables (Optional)
 Go to **Site settings** → **Environment variables** and add:
 
-#### Required Database Variables:
-```
-DB_HOST = crossover.proxy.rlwy.net
-DB_PORT = <YOUR_RAILWAY_TCP_PROXY_PORT>
-DB_USER = <YOUR_MYSQL_USER>
-DB_PASSWORD = <YOUR_MYSQL_PASSWORD>
-DB_NAME = <YOUR_MYSQL_DATABASE>
-```
-
-#### Required JWT Secret:
+#### Optional JWT Secret:
 ```
 JWT_SECRET = <YOUR_SECURE_RANDOM_STRING>
 ```
 Generate a secure random string (e.g., use: `openssl rand -base64 32`)
+
+**Note**: This is optional. If not set, a default value will be used (not recommended for production).
 
 ### Step 6: Deploy
 1. Click **"Deploy site"** button
@@ -66,10 +59,10 @@ Generate a secure random string (e.g., use: `openssl rand -base64 32`)
 - Ensure all environment variables are set correctly
 - Verify that `frontend/package.json` has all required dependencies
 
-### Database Connection Issues
-- Verify all database environment variables are correct
-- Ensure your Railway database is accessible from Netlify's servers
-- Check that the database allows external connections
+### Admin Login Issues
+- Default credentials: username `admin`, password `admin123`
+- Change default password after first login
+- Check that `frontend/data/admin.json` file exists
 
 ### API Routes Not Working
 - Ensure `@netlify/plugin-nextjs` is installed (it's configured in `netlify.toml`)
@@ -86,7 +79,8 @@ Generate a secure random string (e.g., use: `openssl rand -base64 32`)
 ## 🔐 Security Reminders
 
 - Never commit `.env` files to GitHub
-- Use strong, unique values for `JWT_SECRET`
-- Keep your database credentials secure
-- Regularly rotate passwords and secrets
+- Never commit `frontend/data/admin.json` (already in `.gitignore`)
+- Use strong, unique values for `JWT_SECRET` in production
+- Change default admin password after deployment
+- Regularly update passwords
 
