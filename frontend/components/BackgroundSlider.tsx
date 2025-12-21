@@ -1,6 +1,7 @@
 'use client'
 
 import { useEffect, useState } from 'react'
+import Image from 'next/image'
 
 // List of background images from the scroll directory
 const backgroundImages = [
@@ -9,7 +10,7 @@ const backgroundImages = [
   '/scroll/b20666ae00a611ce93a9fde7dcf2fcbe.jpg',
   '/scroll/b373e079205209005e71d094f333a585.jpg',
   '/scroll/bc76ab58abe428ea3041f59cfc7cc153.jpg',
-  '/scroll/c4e696db63f832cc3ad5f3654e8561.jpg',
+  '/scroll/c4e696db63f832cc3ad5d7f3654e8561.jpg',
   '/scroll/dbddadc3317e9a153620d67eefc76c9d.jpg',
   '/scroll/df00f2912ac8ed1f80d636e7c0bf3b6b.jpg',
 ]
@@ -18,30 +19,51 @@ export default function BackgroundSlider() {
   const [currentIndex, setCurrentIndex] = useState(0)
   const [nextIndex, setNextIndex] = useState(1)
   const [isTransitioning, setIsTransitioning] = useState(false)
+  const [imagesLoaded, setImagesLoaded] = useState<Set<number>>(new Set())
 
   // Preload all images for smoother transitions
   useEffect(() => {
-    backgroundImages.forEach((image) => {
-      const img = new Image()
+    backgroundImages.forEach((image, index) => {
+      const img = new window.Image()
+      img.onload = () => {
+        setImagesLoaded(prev => new Set(prev).add(index))
+      }
       img.src = image
     })
   }, [])
 
   useEffect(() => {
     const interval = setInterval(() => {
-      // Start crossfade transition - next image fades in while current fades out
-      setIsTransitioning(true)
+      // Calculate next image index
+      const newNextIndex = (currentIndex + 1) % backgroundImages.length
       
-      // After transition completes, update indices
-      setTimeout(() => {
-        setCurrentIndex((prevIndex) => (prevIndex + 1) % backgroundImages.length)
-        setNextIndex((prevIndex) => (prevIndex + 2) % backgroundImages.length)
-        setIsTransitioning(false)
-      }, 3000) // Wait for transition to complete (3s)
+      // First, set next index - this will render next image with opacity 0
+      setNextIndex(newNextIndex)
+      
+      // Wait a bit to ensure next image is in DOM, and check if it's loaded
+      const checkAndStartTransition = () => {
+        // Ensure next image is loaded before starting transition
+        if (imagesLoaded.has(newNextIndex)) {
+          // Now start the crossfade transition
+          // CSS transition will smoothly animate from current opacity to new opacity
+          setIsTransitioning(true)
+          
+          // After transition completes, update current index and stop transitioning
+          setTimeout(() => {
+            setCurrentIndex(newNextIndex)
+            setIsTransitioning(false)
+          }, 3000) // Wait for transition to complete (3s)
+        } else {
+          // If image not loaded yet, wait a bit more
+          setTimeout(checkAndStartTransition, 100)
+        }
+      }
+      
+      setTimeout(checkAndStartTransition, 100) // Small delay to ensure DOM update
     }, 8000) // Change image every 8 seconds (5s display + 3s transition)
 
     return () => clearInterval(interval)
-  }, [])
+  }, [currentIndex, imagesLoaded])
 
   return (
     <div className="absolute inset-0 overflow-hidden z-0">
@@ -49,26 +71,49 @@ export default function BackgroundSlider() {
         const isCurrent = index === currentIndex
         const isNext = index === nextIndex
         
-        // Calculate opacity for crossfade effect
+        // Calculate opacity for smooth crossfade effect
+        // The key is to ensure both images are in DOM before transition starts
+        // During transition: current fades out (1->0), next fades in (0->1)
+        // When not transitioning: only current is visible (opacity 1)
         let opacity = 0
-        if (isTransitioning) {
-          // During transition: next image fades in (0 to 1), current fades out (1 to 0)
-          opacity = isNext ? 1 : isCurrent ? 0 : 0
-        } else {
-          // When not transitioning: only current image is visible
-          opacity = isCurrent ? 1 : 0
+        if (isCurrent && !isTransitioning) {
+          opacity = 1 // Current image fully visible
+        } else if (isCurrent && isTransitioning) {
+          opacity = 0 // Current image fades out (CSS transition from 1 to 0)
+        } else if (isNext && !isTransitioning) {
+          opacity = 0 // Next image ready but invisible
+        } else if (isNext && isTransitioning) {
+          opacity = 1 // Next image fades in (CSS transition from 0 to 1)
+        }
+        
+        // Only render current and next images for performance
+        if (!isCurrent && !isNext) {
+          return null
         }
         
         return (
           <div
-            key={image}
-            className="absolute inset-0 bg-cover bg-center bg-no-repeat transition-opacity duration-[3000ms] ease-in-out"
+            key={`${image}-${index}`}
+            className="absolute inset-0 transition-opacity duration-[3000ms] ease-in-out"
             style={{
-              backgroundImage: `url(${image})`,
               opacity: opacity,
               zIndex: isNext ? 2 : isCurrent ? 1 : 0,
             }}
-          />
+          >
+            <Image
+              src={image}
+              alt=""
+              fill
+              quality={95}
+              priority={isCurrent || isNext}
+              className="object-cover"
+              sizes="100vw"
+              style={{
+                objectFit: 'cover',
+                objectPosition: 'center',
+              }}
+            />
+          </div>
         )
       })}
       {/* Overlay for better text readability */}
@@ -76,4 +121,3 @@ export default function BackgroundSlider() {
     </div>
   )
 }
-
