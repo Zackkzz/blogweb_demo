@@ -1,12 +1,12 @@
 {
+  "/api/content/route": "/api/content",
   "/_not-found/page": "/_not-found",
   "/api/auth/login/route": "/api/auth/login",
-  "/api/auth/verify/route": "/api/auth/verify",
-  "/api/content/route": "/api/content",
   "/api/auth/update/route": "/api/auth/update",
-  "/about/page": "/about",
-  "/page": "/",
-  "/projects/page": "/projects",
+  "/api/auth/verify/route": "/api/auth/verify",
   "/blog/page": "/blog",
-  "/admin/page": "/admin"
+  "/about/page": "/about",
+  "/admin/page": "/admin",
+  "/page": "/",
+  "/projects/page": "/projects"
 }

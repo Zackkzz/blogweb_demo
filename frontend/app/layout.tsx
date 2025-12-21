@@ -25,7 +25,7 @@ export default function RootLayout({
           <div className="bg-gray-800 flowing-gray-bg border-b border-gray-700 overflow-hidden relative">
             <div className="container mx-auto px-4 py-3 flex justify-between items-center relative z-10">
             <div className="flex items-center">
-              <Link href="/" className="flex items-center">
+              <Link href="/" className="flex items-center space-x-3">
                 <div className="relative h-12 w-auto">
                   <Image
                     src="/logo/zack-code-high-resolution-logo (2).png"
@@ -37,6 +37,13 @@ export default function RootLayout({
                     style={{ filter: 'brightness(0) invert(1)' }}
                   />
                 </div>
+                <span className="text-2xl font-bold text-white"
+                      style={{
+                        fontFamily: '"Montserrat", "Helvetica Neue", "Arial", sans-serif',
+                        fontWeight: '700'
+                      }}>
+                  Zack&apos;s blog
+                </span>
               </Link>
             </div>
             <div className="flex items-center space-x-3 text-xl">

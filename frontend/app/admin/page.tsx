@@ -25,7 +25,13 @@ export default function Admin() {
   const [username, setUsername] = useState('')
   const [password, setPassword] = useState('')
   const [loginError, setLoginError] = useState('')
-  const [activeTab, setActiveTab] = useState<'about' | 'blog' | 'projects'>('about')
+  const [activeTab, setActiveTab] = useState<'about' | 'blog' | 'projects' | 'account'>('about')
+  
+  // Account settings
+  const [currentPassword, setCurrentPassword] = useState('')
+  const [newUsername, setNewUsername] = useState('')
+  const [newPassword, setNewPassword] = useState('')
+  const [newEmail, setNewEmail] = useState('')
   
   // About data
   const [aboutData, setAboutData] = useState<AboutData>({ title: '', content: '' })
@@ -725,6 +731,98 @@ export default function Admin() {
               </div>
             )}
           </div>
+        </div>
+      )}
+
+      {/* Account Tab */}
+      {activeTab === 'account' && (
+        <div className="bg-white rounded-lg shadow p-6">
+          <h2 className="text-2xl font-bold mb-6">Account Settings</h2>
+          <form onSubmit={async (e) => {
+            e.preventDefault()
+            try {
+              const token = localStorage.getItem('token')
+              const res = await fetch('/api/auth/update', {
+                method: 'POST',
+                headers: {
+                  'Content-Type': 'application/json',
+                  'Authorization': `Bearer ${token}`
+                },
+                body: JSON.stringify({
+                  currentPassword,
+                  newUsername: newUsername || undefined,
+                  newPassword: newPassword || undefined,
+                  newEmail: newEmail || undefined
+                })
+              })
+              
+              const data = await res.json()
+              if (res.ok) {
+                setMessage('Account updated successfully!')
+                setCurrentPassword('')
+                setNewUsername('')
+                setNewPassword('')
+                setNewEmail('')
+                setTimeout(() => setMessage(''), 3000)
+              } else {
+                setMessage(data.error || 'Failed to update account')
+              }
+            } catch (error) {
+              setMessage('Error updating account')
+            }
+          }}>
+            <div className="mb-4">
+              <label className="block text-gray-700 font-semibold mb-2">Current Password *</label>
+              <input
+                type="password"
+                value={currentPassword}
+                onChange={(e) => setCurrentPassword(e.target.value)}
+                className="w-full border border-gray-300 rounded-md px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500 !text-black"
+                required
+                placeholder="Enter current password to make changes"
+              />
+            </div>
+            
+            <div className="mb-4">
+              <label className="block text-gray-700 font-semibold mb-2">New Username (optional)</label>
+              <input
+                type="text"
+                value={newUsername}
+                onChange={(e) => setNewUsername(e.target.value)}
+                className="w-full border border-gray-300 rounded-md px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500 !text-black"
+                placeholder="Leave empty to keep current username"
+              />
+            </div>
+            
+            <div className="mb-4">
+              <label className="block text-gray-700 font-semibold mb-2">New Password (optional)</label>
+              <input
+                type="password"
+                value={newPassword}
+                onChange={(e) => setNewPassword(e.target.value)}
+                className="w-full border border-gray-300 rounded-md px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500 !text-black"
+                placeholder="Leave empty to keep current password"
+              />
+            </div>
+            
+            <div className="mb-6">
+              <label className="block text-gray-700 font-semibold mb-2">New Email (optional)</label>
+              <input
+                type="email"
+                value={newEmail}
+                onChange={(e) => setNewEmail(e.target.value)}
+                className="w-full border border-gray-300 rounded-md px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500 !text-black"
+                placeholder="Leave empty to keep current email"
+              />
+            </div>
+            
+            <button
+              type="submit"
+              className="bg-blue-600 text-white px-6 py-2 rounded-md hover:bg-blue-700 transition-colors font-semibold"
+            >
+              Update Account
+            </button>
+          </form>
         </div>
       )}
     </div>
