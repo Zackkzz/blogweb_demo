@@ -1,6 +1,7 @@
 import type { Metadata } from 'next'
 import { Inter } from 'next/font/google'
 import Link from 'next/link'
+import ZackCodeLogo from '@/components/ZackCodeLogo'
 import './globals.css'
 
 const inter = Inter({ subsets: ['latin'] })
@@ -24,41 +25,8 @@ export default function RootLayout({
           <div className="bg-gray-800 flowing-gray-bg border-b border-gray-700 overflow-hidden relative">
             <div className="container mx-auto px-4 py-3 flex justify-between items-center relative z-10">
             <div className="flex items-center">
-              <Link href="/" className="flex items-center space-x-2">
-                <div className="relative">
-                  {/* Capybara coding logo */}
-                  <div className="w-16 h-12 bg-green-200 rounded-full relative overflow-hidden border-2 border-green-400 shadow-lg">
-                    {/* Capybara body */}
-                    <div className="w-full h-full bg-green-300 rounded-full relative">
-                      {/* Head */}
-                      <div className="absolute top-0 left-1/2 transform -translate-x-1/2 w-10 h-7 bg-green-400 rounded-t-full"></div>
-                      {/* Eyes - focused on screen */}
-                      <div className="absolute top-1.5 left-2.5 w-1.5 h-1.5 bg-black rounded-full"></div>
-                      <div className="absolute top-1.5 right-2.5 w-1.5 h-1.5 bg-black rounded-full"></div>
-                      {/* Nose */}
-                      <div className="absolute top-3 left-1/2 transform -translate-x-1/2 w-2 h-1 bg-pink-300 rounded-full"></div>
-                      {/* Ears */}
-                      <div className="absolute -top-1 left-1.5 w-2 h-3 bg-green-500 rounded-t-full transform rotate-12"></div>
-                      <div className="absolute -top-1 right-1.5 w-2 h-3 bg-green-500 rounded-t-full transform -rotate-12"></div>
-                      {/* Front legs typing */}
-                      <div className="absolute bottom-0 left-2 w-2 h-3 bg-green-400 rounded-b-sm"></div>
-                      <div className="absolute bottom-0 right-2 w-2 h-3 bg-green-400 rounded-b-sm"></div>
-                      {/* Computer screen */}
-                      <div className="absolute bottom-1 left-1/2 transform -translate-x-1/2 w-6 h-2 bg-gray-800 rounded-sm border border-gray-600">
-                        <div className="w-full h-full bg-blue-900 rounded-sm flex items-center justify-center">
-                          <div className="text-xs text-green-400 font-mono">{'</>'}</div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <span className="text-2xl font-bold text-white"
-                      style={{
-                        fontFamily: '"Montserrat", "Helvetica Neue", "Arial", sans-serif',
-                        fontWeight: '700'
-                      }}>
-                  Zack&apos;s blog
-                </span>
+              <Link href="/" className="flex items-center">
+                <ZackCodeLogo size="small" color="white" />
               </Link>
             </div>
             <div className="flex items-center space-x-3 text-xl">
