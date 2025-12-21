@@ -53,12 +53,12 @@ export default function Home() {
           <div className="flex items-center space-x-3">
             <div className="w-12 h-12 rounded-full overflow-hidden border-2 border-white/30">
               <img 
-                src="/zack-profile.jpg" 
+                src="/profile.jpg" 
                 alt="Zack" 
                 className="w-full h-full object-cover"
                 onError={(e) => {
-                  // Fallback to a default image if the custom image doesn't exist
-                  (e.target as HTMLImageElement).src = 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=150&h=150&fit=crop&crop=face'
+                  // Fallback to default image if the custom image doesn't exist
+                  (e.target as HTMLImageElement).src = 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=150&h=150&fit=crop&crop=face';
                 }}
               />
             </div>
