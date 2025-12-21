@@ -8,7 +8,7 @@ import './globals.css'
 const inter = Inter({ subsets: ['latin'] })
 
 export const metadata: Metadata = {
-  title: 'My Space',
+  title: 'Zack space',
   description: 'My personal website',
   icons: {
     icon: '/logo/zack-space-high-resolution-logo-grayscale-transparent.png',
@@ -34,7 +34,7 @@ export default function RootLayout({
                 <div className="relative h-16 w-auto">
                   <Image
                     src="/logo/zack-space-high-resolution-logo-grayscale-transparent.png"
-                    alt="ZACK SPACE Logo"
+                    alt="Logo"
                     width={250}
                     height={100}
                     className="h-full w-auto object-contain"
@@ -96,25 +96,25 @@ export default function RootLayout({
             <div className="container mx-auto px-4 py-3">
               <div className="flex justify-center space-x-8">
                     <Link href="/" className="px-6 py-3 border border-orange-600/40 rounded-md bg-transparent shadow-sm hover:bg-orange-500/20 hover:border-orange-500/60 hover:shadow-md transition-all duration-300 font-bold text-orange-900/90"
-                          style={{
-                            fontFamily: '"Montserrat", "Helvetica Neue", "Arial", sans-serif',
-                            fontWeight: '600'
-                          }}>Home</Link>
+                      style={{
+                        fontFamily: '"Montserrat", "Helvetica Neue", "Arial", sans-serif',
+                        fontWeight: '600'
+                      }}>Home</Link>
                     <Link href="/about" className="px-6 py-3 border border-orange-600/40 rounded-md bg-transparent shadow-sm hover:bg-orange-500/20 hover:border-orange-500/60 hover:shadow-md transition-all duration-300 font-bold text-orange-900/90"
-                          style={{
-                            fontFamily: '"Montserrat", "Helvetica Neue", "Arial", sans-serif',
-                            fontWeight: '600'
-                          }}>About</Link>
+                      style={{
+                        fontFamily: '"Montserrat", "Helvetica Neue", "Arial", sans-serif',
+                        fontWeight: '600'
+                      }}>About</Link>
                     <Link href="/projects" className="px-6 py-3 border border-orange-600/40 rounded-md bg-transparent shadow-sm hover:bg-orange-500/20 hover:border-orange-500/60 hover:shadow-md transition-all duration-300 font-bold text-orange-900/90"
-                          style={{
-                            fontFamily: '"Montserrat", "Helvetica Neue", "Arial", sans-serif',
-                            fontWeight: '600'
-                          }}>Projects</Link>
+                      style={{
+                        fontFamily: '"Montserrat", "Helvetica Neue", "Arial", sans-serif',
+                        fontWeight: '600'
+                      }}>Projects</Link>
                     <Link href="/blog" className="px-6 py-3 border border-orange-600/40 rounded-md bg-transparent shadow-sm hover:bg-orange-500/20 hover:border-orange-500/60 hover:shadow-md transition-all duration-300 font-bold text-orange-900/90"
-                          style={{
-                            fontFamily: '"Montserrat", "Helvetica Neue", "Arial", sans-serif',
-                            fontWeight: '600'
-                          }}>Blog</Link>
+                      style={{
+                        fontFamily: '"Montserrat", "Helvetica Neue", "Arial", sans-serif',
+                        fontWeight: '600'
+                      }}>Blog</Link>
                     <Link href="/experience" className="px-6 py-3 border border-orange-600/40 rounded-md bg-transparent shadow-sm hover:bg-orange-500/20 hover:border-orange-500/60 hover:shadow-md transition-all duration-300 font-bold text-orange-900/90"
                           style={{
                             fontFamily: '"Montserrat", "Helvetica Neue", "Arial", sans-serif',
@@ -126,10 +126,10 @@ export default function RootLayout({
                             fontWeight: '600'
                           }}>Education</Link>
                     <Link href="/admin" className="px-6 py-3 border border-orange-600/40 rounded-md bg-transparent shadow-sm hover:bg-orange-500/20 hover:border-orange-500/60 hover:shadow-md transition-all duration-300 font-bold text-orange-900/90"
-                          style={{
-                            fontFamily: '"Montserrat", "Helvetica Neue", "Arial", sans-serif',
-                            fontWeight: '600'
-                          }}>Admin</Link>
+                      style={{
+                        fontFamily: '"Montserrat", "Helvetica Neue", "Arial", sans-serif',
+                        fontWeight: '600'
+                      }}>Admin</Link>
               </div>
             </div>
           </nav>

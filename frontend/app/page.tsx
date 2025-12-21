@@ -32,7 +32,7 @@ export default function Home() {
         if (data && data.home) {
           setContent(data.home)
         } else {
-          setContent({ title: 'Good Day! Welcome to Zack space!', content: 'Loading...' })
+          setContent({ title: 'Good Day! Welcome to My Space!', content: 'Loading...' })
         }
         // Get contact info if available
         if (data && data.contact) {
@@ -41,7 +41,7 @@ export default function Home() {
       })
       .catch(error => {
         console.error('Error fetching content:', error)
-        setContent({ title: 'Good Day! Welcome to Zack space!', content: 'Content is loading...' })
+        setContent({ title: 'Good Day! Welcome to My Space!', content: 'Content is loading...' })
       })
   }, [])
 
@@ -135,7 +135,7 @@ export default function Home() {
             <div className="text-center max-w-4xl">
               <h1 className="text-5xl md:text-7xl font-bold text-white mb-8 leading-tight">
                 <span className="flex items-center justify-center gap-3 flex-wrap">
-                  <span>{content.title || 'Good Day! Welcome to Zack space!'}</span>
+                  <span>{content.title || 'Good Day! Welcome to My Space!'}</span>
                   <span className={`wave-hand ${waveStopped ? 'stopped' : ''}`}>👋</span>
                 </span>
               </h1>
@@ -154,7 +154,7 @@ export default function Home() {
             {/* Copyright - Bottom center */}
             <div className="absolute bottom-4 left-0 right-0 text-center z-20">
               <p className="text-white/70 text-sm md:text-base">
-                © {new Date().getFullYear()} Zack&apos;s Space. All rights reserved.
+                © {new Date().getFullYear()} My Space. All rights reserved.
               </p>
             </div>
           </div>
@@ -252,7 +252,7 @@ export default function Home() {
             {/* Copyright - Bottom center */}
             <div className="absolute bottom-4 left-0 right-0 text-center z-20">
               <p className="text-white/70 text-sm md:text-base">
-                © {new Date().getFullYear()} Zack&apos;s Space. All rights reserved.
+                © {new Date().getFullYear()} My Space. All rights reserved.
               </p>
             </div>
           </div>
@@ -266,7 +266,7 @@ export default function Home() {
             <div className="w-20 h-20 rounded-full overflow-hidden border-2 border-white/30 flex items-center justify-center bg-gray-800/20">
               <img 
                 src={`/profile.jpg?t=${new Date().getTime()}`} 
-                alt="Zack" 
+                alt="Profile" 
                 className="w-full h-full object-cover"
                 style={{ 
                   objectPosition: 'center center',
@@ -281,7 +281,7 @@ export default function Home() {
               />
             </div>
             <div className="text-right">
-              <div className="font-semibold text-base">Zack</div>
+              <div className="font-semibold text-base">Your Name</div>
               <div className="text-sm text-white/70">{new Date().toLocaleDateString()}</div>
             </div>
           </div>

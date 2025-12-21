@@ -28,7 +28,7 @@ const dataPath = getDataPath()
 // Default content structure
 const defaultContent = {
   home: {
-    title: 'Good Day! Welcome to Zack space!',
+    title: 'Good Day! Welcome to My Space!',
     content: 'This is the home page content. You can edit this from the admin panel.',
     backgroundImage: '/scroll/757c36f4d3c685ebf384a0c9f3d8d067.jpg'
   },

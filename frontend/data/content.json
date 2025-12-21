@@ -1,26 +1,26 @@
 {
   "home": {
-    "title": "Good Day! Welcome to My Space!",
+    "title": "Good Day! Welcome to Zack space!",
     "content": "",
     "backgroundImage": "/scroll/757c36f4d3c685ebf384a0c9f3d8d067.jpg"
   },
   "about": {
     "title": "About Me",
-    "content": "<ul>\n<li>Computer Science student with experience in software development.</li>\n<li>Familiar with backend techniques, proficient in various programming languages.</li>\n<li>Have a strong understanding of data structures and algorithms.</li>\n<li>Experience in software construction through teamwork and individually.</li>\n<li>Mainly use modern web technologies for backend implementation.</li>\n<li>Experience in testing and following CI/CD pipeline practices.</li>\n<li>Self-motivated person with a strong commitment to growth.</li>\n<li>Curious mind with an eagerness to learn.</li>\n<li>Proven collaboration, attention to detail, and troubleshooting skills.</li>\n</ul>",
-    "name": "Your Name",
+    "content": "<ul>\n<li>Second-year student pursuing a Bachelor of Science in Computer Science.</li>\n<li>Familiar with backend techniques, proficient in C#, Java, TypeScript, and JavaScript.</li>\n<li>Have a strong understanding of data structures and algorithms. Have multiple experiences in software construction through teamwork and individually.</li>\n<li>Mainly use Java, JS, and TS for functionality, Rest API, Node.js, and Express.js for web API backend implementation.</li>\n<li>Experience in JUnit tests for testing. &bull; Comfortable with using NPM and GitLab/GitHub for software development.&nbsp;</li>\n<li>Comfortable with following the CI/CD pipeline for software development.&nbsp;</li>\n<li>Self-motivated person with a strong commitment to growth.</li>\n<li>Curious mind with an eagerness to learn. Good verbal and writing skills in English, with efficient and warm communication skills with people.</li>\n<li>Proven collaboration, attention to detail, and troubleshooting skills during software development experience.</li>\n</ul>",
+    "name": "Zack Zeng",
     "position": "Computer Science Student",
-    "email": "your.email@example.com",
-    "phone": "",
-    "location": "",
-    "summary": "Computer Science student with strong backend development skills and experience in software construction.",
+    "email": "zackzeng1@outlook.com",
+    "phone": "0411759996",
+    "location": "Alexandria, Australia 2015",
+    "summary": "Second-year Computer Science student with strong backend development skills and experience in software construction.",
     "photo": "/profile.jpg"
   },
   "contact": {
-    "email": "your.email@example.com",
-    "github": "https://github.com/yourusername",
-    "linkedin": "",
+    "email": "zackzeng1@outlook.com",
+    "github": "https://github.com/LinghuCh0ng",
+    "linkedin": "https://www.linkedin.com/in/zack-zeng-949081338",
     "twitter": "",
-    "website": ""
+    "website": "https://zackkspace.com/"
   },
   "projects": [
     {
@@ -32,17 +32,121 @@
   ],
   "blog": [
     {
-      "id": "welcome",
-      "title": "Welcome to My Website!",
-      "content": "<p>Welcome to my personal website! I'm thrilled to have you here.</p>\n\n<p>This website serves as a comprehensive showcase of my journey, experiences, and projects in the field of computer science. Here's what you'll find:</p>\n\n<ul>\n<li><strong>About Me</strong>: Learn more about my background, skills, and interests.</li>\n<li><strong>Experience</strong>: Explore my work experience, educational journey, and projects in a timeline format.</li>\n<li><strong>Education</strong>: Discover my academic journey and the courses I've completed.</li>\n<li><strong>Projects</strong>: Browse through my portfolio of software development projects.</li>\n<li><strong>Blog</strong>: Read my thoughts, updates, and insights on technology and programming.</li>\n</ul>\n\n<p>Feel free to explore the different sections of this website, and don't hesitate to reach out if you'd like to connect or collaborate.</p>\n\n<p>Thank you for visiting, and I hope you enjoy exploring my work!</p>",
+      "id": "welcome-to-zack-space",
+      "title": "Welcome to Zack Space!",
+      "content": "<p>Welcome to my personal website! I'm thrilled to have you here.</p>\n\n<p>This website serves as a comprehensive showcase of my journey, experiences, and projects in the field of computer science. Here's what you'll find:</p>\n\n<ul>\n<li><strong>About Me</strong>: Learn more about my background, skills, and interests as a Computer Science student at UNSW.</li>\n<li><strong>Experience</strong>: Explore my work experience, educational journey, and projects in a timeline format.</li>\n<li><strong>Education</strong>: Discover my academic journey, including my current studies at UNSW and the courses I've completed.</li>\n<li><strong>Projects</strong>: Browse through my portfolio of software development projects, including this very website!</li>\n<li><strong>Blog</strong>: Read my thoughts, updates, and insights on technology, programming, and my learning journey.</li>\n</ul>\n\n<p>I'm a second-year student pursuing a Bachelor of Science in Computer Science at the University of New South Wales (UNSW). I'm passionate about backend development, software engineering, and building practical solutions using modern technologies like Node.js, TypeScript, and Java.</p>\n\n<p>Feel free to explore the different sections of this website, and don't hesitate to reach out if you'd like to connect or collaborate. You can find my contact information in the Home page or through the links provided.</p>\n\n<p>Thank you for visiting, and I hope you enjoy exploring my work!</p>\n\n<p>Best regards,<br>Zack</p>",
       "date": "2025-01-15"
     }
   ],
-  "experience": [],
+  "experience": [
+    {
+      "id": "code-camp-teacher-2025",
+      "type": "work",
+      "title": "Teacher",
+      "organization": "Code Camp",
+      "description": "<ul>\n<li>Developed engaging coding lessons, such as JS and C#, for students aged 7 to 16.</li>\n<li>Collaborated with staff to create supportive learning environments.</li>\n<li>Utilized educational tools to streamline lesson delivery and assessment.</li>\n<li>Facilitated hands-on workshops to enhance student programming skills.</li>\n</ul>",
+      "startDate": "2025-12-01",
+      "endDate": "",
+      "location": "Sydney, NSW",
+      "icon": "/Code Camp logo blue.svg"
+    },
+    {
+      "id": "unsw-tutor-2024",
+      "type": "work",
+      "title": "Tutor",
+      "organization": "UNSW",
+      "description": "<ul>\n<li>I have done a few tutorials for students in computer science studies, which relate to their daily tasks, confusion about programming during course study, and assignment-related problems.</li>\n<li>Adapted instruction methods based on individual learning styles.</li>\n<li>Assessed student progress and provided constructive feedback regularly.</li>\n<li>Utilized educational tools and resources to support learning objectives.</li>\n</ul>",
+      "startDate": "2024-06-01",
+      "endDate": "",
+      "location": "Sydney, NSW",
+      "icon": "/unsw.png"
+    },
+    {
+      "id": "algorithm-study-2025",
+      "type": "education",
+      "title": "Algorithm Study",
+      "organization": "UNSW",
+      "description": "<ul>\n<li>Have a solid understanding and acknowledgment throughout the study of data analysis and algorithms.</li>\n<li>Finished programs using binary search tree and graph knowledge.</li>\n<li>Learn elementary sorting, divide-and-conquer sorting, and non-comparison-based sorting.</li>\n<li>Learn binary tree, balancing tree, AVL tree, DFS, and BFS.</li>\n<li>Study graph, graph traversal, graph problems, and directed/weighted graphs.</li>\n<li>Study the Digraph algorithm, such as Warshall.</li>\n<li>Study Dijkstra's, minimum spanning tree, and its related algorithms, such as Prim's and Kruskal's.</li>\n<li>Hash tables, priority queues, heaps, tries, and each's application.</li>\n</ul>",
+      "startDate": "2025-06-01",
+      "endDate": "2025-08-31",
+      "location": "Sydney, NSW",
+      "icon": "/unsw.png"
+    },
+    {
+      "id": "software-developer-2025",
+      "type": "project",
+      "title": "Software Developer",
+      "organization": "UNSW",
+      "description": "<ul>\n<li>Participate in a project that builds the backend JavaScript server for a mission control platform, following Modular Monolith.</li>\n<li>Be the leader of the group, design the system, and assign individual tasks for each member based on analyzing the requirements from the contract and customers, and converting the requirements into the functionalities of the program.</li>\n<li>Responsible for publishing the issues and checking out the merge requests during the program process in GitLab to ensure the maintainability of the program.</li>\n<li>Using REST API to facilitate communication between the frontend and backend via HTTP.</li>\n<li>Contribute to a big part of the code using Node.js and REST API for solving HTTP requests with using backend functionalities.</li>\n<li>Contribute to tests using JUnit test.</li>\n<li>Participate in and be responsible for code review and testing to assure software quality.</li>\n<li>Using Hugging Face LLM to achieve the functionality of customers chatting with the LLM about space missions using Node.js via REST API request.</li>\n<li>Manage the programming life cycle during the project as a leader.</li>\n<li>Participated in code reviews to improve software quality and functionality.</li>\n<li>Troubleshoot client requirements and program issues in different ways, such as black-box tests and design by contract.</li>\n<li>Proven communication and collaboration skills as a group leader, and facilitate work efficiency by effective communication and task allocation.</li>\n<li>Attention to detail as I helped members filter out problems by testing and finding type errors, logic errors.</li>\n</ul>",
+      "startDate": "2025-02-01",
+      "endDate": "2025-05-31",
+      "location": "Sydney, NSW",
+      "icon": "/unsw.png"
+    },
+    {
+      "id": "arc-student-life-2025",
+      "type": "work",
+      "title": "Member",
+      "organization": "Arc UNSW Student Life",
+      "description": "<ul>\n<li>Member of the Arc Student Life Society.</li>\n<li>Participated in campus events to enhance community engagement and networking.</li>\n</ul>",
+      "startDate": "2025-02-01",
+      "endDate": "",
+      "location": "Sydney, NSW",
+      "icon": "/arc-logo.svg"
+    },
+    {
+      "id": "unsw-oop-2025",
+      "type": "education",
+      "title": "Object Oriented Programming",
+      "organization": "UNSW",
+      "description": "<ul>\n<li>Use Java for software development with two main projects completed.</li>\n<li>Have a solid understanding of Object oriented programming.</li>\n</ul>",
+      "startDate": "2025-09-01",
+      "endDate": "",
+      "location": "Sydney",
+      "icon": "/unsw.png"
+    }
+  ],
   "education": {
     "title": "Education",
     "description": "My academic journey in computer science, focusing on backend development, software engineering, and practical application of programming skills.",
-    "items": []
+    "items": [
+      {
+        "id": "unsw-bsc-cs-2024",
+        "degree": "Bachelor of Science",
+        "fieldOfStudy": "Computer Science",
+        "institution": "University of New South Wales (UNSW)",
+        "startDate": "2024-02-01",
+        "endDate": "",
+        "location": "Sydney, Australia",
+        "description": "Currently pursuing a Bachelor of Science in Computer Science at UNSW, one of Australia's leading research universities. As a second-year student, I have developed strong foundational knowledge in computer science principles, with particular focus on backend development and software engineering practices. The program emphasizes both theoretical understanding and practical application, preparing students for careers in software development, research, and technology innovation.",
+        "activities": [
+          "Participating in software construction projects through both teamwork and individual work",
+          "Engaging in collaborative development using GitLab/GitHub",
+          "Following CI/CD pipeline practices in software development",
+          "Building web API backends using Node.js and Express.js"
+        ],
+        "courses": [
+          {
+            "name": "Introduction to Programming",
+            "score": 80
+          },
+          {
+            "name": "Computer Systems Fundamentals",
+            "score": 81
+          },
+          {
+            "name": "Software Eng Fundamentals",
+            "score": 83
+          },
+          {
+            "name": "Data Structures and Algorithms",
+            "score": 68
+          }
+        ],
+        "wam": 68.5,
+        "isCurrentWam": true,
+        "icon": "/unsw.png"
+      }
+    ]
   }
 }
-
