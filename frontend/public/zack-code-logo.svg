@@ -1,0 +1,36 @@
+<svg width="400" height="350" xmlns="http://www.w3.org/2000/svg">
+  <!-- Background -->
+  <rect width="400" height="350" fill="white"/>
+  
+  <!-- Sydney Opera House Illustration -->
+  <g transform="translate(200, 50)">
+    <!-- Left shell -->
+    <path d="M -60 20 L -50 0 L -40 20 L -30 0 L -20 20 L -10 0 L 0 20" 
+          stroke="black" stroke-width="2" fill="none"/>
+    <!-- Center shell (tallest) -->
+    <path d="M -20 20 L -10 0 L 0 20 L 10 0 L 20 20" 
+          stroke="black" stroke-width="2" fill="none"/>
+    <!-- Right shell -->
+    <path d="M 20 20 L 30 0 L 40 20 L 50 0 L 60 20 L 70 0 L 80 20" 
+          stroke="black" stroke-width="2" fill="none"/>
+    <!-- Base/Foundation -->
+    <line x1="-80" y1="20" x2="100" y2="20" stroke="black" stroke-width="2"/>
+    <line x1="-80" y1="25" x2="100" y2="25" stroke="black" stroke-width="1"/>
+  </g>
+  
+  <!-- EST. text -->
+  <text x="80" y="40" font-family="Arial, sans-serif" font-size="14" fill="black" font-weight="normal">EST.</text>
+  
+  <!-- 2025 text -->
+  <text x="280" y="40" font-family="Arial, sans-serif" font-size="14" fill="black" font-weight="normal">2025</text>
+  
+  <!-- ZACK text -->
+  <text x="200" y="140" font-family="Arial, sans-serif" font-size="52" fill="black" font-weight="bold" text-anchor="middle" letter-spacing="2">ZACK</text>
+  
+  <!-- CODE text -->
+  <text x="200" y="185" font-family="Arial, sans-serif" font-size="40" fill="black" font-weight="bold" text-anchor="middle" letter-spacing="2">CODE</text>
+  
+  <!-- Tagline: Innovate. Inspire. Ignite. - positioned below CODE with proper spacing -->
+  <text x="200" y="230" font-family="Arial, sans-serif" font-size="18" fill="black" font-weight="normal" text-anchor="middle" letter-spacing="1">Innovate. Inspire. Ignite.</text>
+</svg>
+
