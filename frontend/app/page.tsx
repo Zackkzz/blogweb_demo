@@ -58,8 +58,8 @@ export default function Home() {
       
       {/* Bottom right corner info */}
       <div className="absolute bottom-8 right-8 z-20">
-        <div className="bg-white/10 backdrop-blur-md rounded-lg p-4 text-white">
-          <div className="flex items-center space-x-3">
+        <div className="bg-white/10 backdrop-blur-md rounded-lg p-5 text-white">
+          <div className="flex items-center space-x-4">
             <div className="w-20 h-20 rounded-full overflow-hidden border-2 border-white/30 flex items-center justify-center bg-gray-800/20">
               <img 
                 src="/profile.jpg" 
@@ -78,8 +78,8 @@ export default function Home() {
               />
             </div>
             <div className="text-right">
-              <div className="font-semibold text-sm">Zack</div>
-              <div className="text-xs text-white/70">{new Date().toLocaleDateString()}</div>
+              <div className="font-semibold text-base">Zack</div>
+              <div className="text-sm text-white/70">{new Date().toLocaleDateString()}</div>
             </div>
           </div>
         </div>
