@@ -1,6 +1,7 @@
 'use client'
 
 import { useEffect, useState } from 'react'
+import BackgroundSlider from '@/components/BackgroundSlider'
 
 export default function Home() {
   const [content, setContent] = useState<{ title: string; content: string }>({ title: '', content: '' })
@@ -36,10 +37,12 @@ export default function Home() {
   }, [])
 
   return (
-    <div className="relative min-h-screen bg-cover bg-center bg-no-repeat" 
-         style={{ backgroundImage: 'url(https://images.unsplash.com/photo-1518837695005-2083093ee35b?w=1920&h=1080&fit=crop&crop=center)' }}>
+    <div className="relative min-h-screen overflow-hidden">
+      {/* Background image slider */}
+      <BackgroundSlider />
+      
       {/* Overlay for better text readability */}
-      <div className="absolute inset-0 bg-black bg-opacity-40"></div>
+      <div className="absolute inset-0 bg-black bg-opacity-40 z-10"></div>
       
       {/* Main content */}
       <div className="relative z-10 flex items-center justify-center min-h-screen px-4">
