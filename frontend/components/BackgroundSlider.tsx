@@ -66,7 +66,7 @@ export default function BackgroundSlider() {
   }, [currentIndex, imagesLoaded])
 
   return (
-    <div className="absolute inset-0 overflow-hidden z-0">
+    <div className="absolute inset-0 overflow-hidden z-0 bg-black">
       {backgroundImages.map((image, index) => {
         const isCurrent = index === currentIndex
         const isNext = index === nextIndex
@@ -106,12 +106,12 @@ export default function BackgroundSlider() {
               fill
               quality={95}
               priority={isCurrent || isNext}
-              className="object-cover"
               sizes="100vw"
               style={{
-                objectFit: 'cover',
+                objectFit: 'contain',
                 objectPosition: 'center',
               }}
+              className="object-contain"
             />
           </div>
         )
