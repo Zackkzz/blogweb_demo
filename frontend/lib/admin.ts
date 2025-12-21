@@ -42,8 +42,8 @@ export function getAdmin(): AdminUser {
     if (fs.existsSync(adminFilePath)) {
       const data = fs.readFileSync(adminFilePath, 'utf8');
       const admin = JSON.parse(data);
-      // Verify the hash from file is valid
-      if (admin.passwordHash && bcrypt.compareSync('admin123', admin.passwordHash)) {
+      // Return admin from file if it has required fields
+      if (admin.username && admin.passwordHash && admin.email) {
         return admin;
       }
     }
