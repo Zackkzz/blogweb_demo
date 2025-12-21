@@ -1,5 +1,7 @@
 # Personal Blog Website
 
+**Version 2.0**
+
 A modern personal website built with Next.js 15, featuring a beautiful UI with Tailwind CSS and an admin panel for content management.
 
 ## ✨ Features
