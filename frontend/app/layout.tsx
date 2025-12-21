@@ -8,7 +8,7 @@ import './globals.css'
 const inter = Inter({ subsets: ['latin'] })
 
 export const metadata: Metadata = {
-  title: 'Zack space',
+  title: 'My Space',
   description: 'My personal website',
   icons: {
     icon: '/logo/zack-space-high-resolution-logo-grayscale-transparent.png',
