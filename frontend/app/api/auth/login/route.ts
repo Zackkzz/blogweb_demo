@@ -10,13 +10,19 @@ export async function POST(request: NextRequest) {
     
     const admin = getAdmin();
     
+    // Debug logging (remove in production)
+    console.log('Login attempt:', { username, adminUsername: admin.username, adminEmail: admin.email });
+    
     // Check if username or email matches
     if (username !== admin.username && username !== admin.email) {
+      console.log('Username/email mismatch');
       return NextResponse.json({ error: 'Invalid credentials' }, { status: 401 });
     }
     
     // Verify password
-    if (!verifyPassword(password, admin.passwordHash)) {
+    const passwordValid = verifyPassword(password, admin.passwordHash);
+    console.log('Password verification:', passwordValid);
+    if (!passwordValid) {
       return NextResponse.json({ error: 'Invalid credentials' }, { status: 401 });
     }
     
