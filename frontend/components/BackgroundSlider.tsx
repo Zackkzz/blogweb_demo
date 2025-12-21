@@ -16,43 +16,63 @@ const backgroundImages = [
 
 export default function BackgroundSlider() {
   const [currentIndex, setCurrentIndex] = useState(0)
-  const [isVisible, setIsVisible] = useState(true)
+  const [nextIndex, setNextIndex] = useState(1)
+  const [isTransitioning, setIsTransitioning] = useState(false)
 
-  // Preload next image for smoother transitions
+  // Preload all images for smoother transitions
   useEffect(() => {
-    const nextIndex = (currentIndex + 1) % backgroundImages.length
-    const img = new Image()
-    img.src = backgroundImages[nextIndex]
-  }, [currentIndex])
+    backgroundImages.forEach((image) => {
+      const img = new Image()
+      img.src = image
+    })
+  }, [])
 
   useEffect(() => {
     const interval = setInterval(() => {
-      // Start fade out (smooth transition)
-      setIsVisible(false)
+      // Start crossfade transition - next image fades in while current fades out
+      setIsTransitioning(true)
       
-      // After fade out completes, change image and fade in
+      // After transition completes, update indices
       setTimeout(() => {
         setCurrentIndex((prevIndex) => (prevIndex + 1) % backgroundImages.length)
-        setIsVisible(true)
-      }, 3000) // Wait for fade out animation to complete (3s)
+        setNextIndex((prevIndex) => (prevIndex + 2) % backgroundImages.length)
+        setIsTransitioning(false)
+      }, 3000) // Wait for transition to complete (3s)
     }, 8000) // Change image every 8 seconds (5s display + 3s transition)
 
     return () => clearInterval(interval)
   }, [])
 
   return (
-    <div className="absolute inset-0 overflow-hidden">
-      {backgroundImages.map((image, index) => (
-        <div
-          key={image}
-          className={`absolute inset-0 bg-cover bg-center bg-no-repeat transition-opacity duration-[3000ms] ease-in-out ${
-            index === currentIndex && isVisible ? 'opacity-100 z-10' : 'opacity-0 z-0'
-          }`}
-          style={{
-            backgroundImage: `url(${image})`,
-          }}
-        />
-      ))}
+    <div className="absolute inset-0 overflow-hidden z-0">
+      {backgroundImages.map((image, index) => {
+        const isCurrent = index === currentIndex
+        const isNext = index === nextIndex
+        
+        // Calculate opacity for crossfade effect
+        let opacity = 0
+        if (isTransitioning) {
+          // During transition: next image fades in (0 to 1), current fades out (1 to 0)
+          opacity = isNext ? 1 : isCurrent ? 0 : 0
+        } else {
+          // When not transitioning: only current image is visible
+          opacity = isCurrent ? 1 : 0
+        }
+        
+        return (
+          <div
+            key={image}
+            className="absolute inset-0 bg-cover bg-center bg-no-repeat transition-opacity duration-[3000ms] ease-in-out"
+            style={{
+              backgroundImage: `url(${image})`,
+              opacity: opacity,
+              zIndex: isNext ? 2 : isCurrent ? 1 : 0,
+            }}
+          />
+        )
+      })}
+      {/* Overlay for better text readability */}
+      <div className="absolute inset-0 bg-black bg-opacity-40 z-3"></div>
     </div>
   )
 }

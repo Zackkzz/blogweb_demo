@@ -41,15 +41,12 @@ export default function Home() {
       {/* Background image slider */}
       <BackgroundSlider />
       
-      {/* Overlay for better text readability */}
-      <div className="absolute inset-0 bg-black bg-opacity-40 z-10"></div>
-      
       {/* Main content */}
       <div className="relative z-10 flex items-center justify-center min-h-screen px-4">
         <div className="text-center max-w-4xl">
           <h1 className="text-5xl md:text-7xl font-bold text-white mb-8 leading-tight">
             <span className="flex items-center justify-center gap-3 flex-wrap">
-              <span>Good Day! Welcome to Zack&apos;s blog!</span>
+              <span>{content.title || 'Good Day! Welcome to Zack&apos;s blog!'}</span>
               <span className={`wave-hand ${waveStopped ? 'stopped' : ''}`}>👋</span>
             </span>
           </h1>

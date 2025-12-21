@@ -7,7 +7,7 @@ const dataPath = path.join(process.cwd(), 'data', 'content.json')
 // Default content structure
 const defaultContent = {
   home: {
-    title: 'Welcome to My Personal Website',
+    title: 'Good Day! Welcome to Zack\'s blog!',
     content: 'This is the home page content. You can edit this from the admin panel.'
   },
   about: {
