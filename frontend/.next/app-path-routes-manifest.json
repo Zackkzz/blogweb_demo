@@ -1,13 +1,13 @@
 {
   "/_not-found/page": "/_not-found",
-  "/api/auth/login/route": "/api/auth/login",
-  "/api/content/route": "/api/content",
   "/api/auth/update/route": "/api/auth/update",
   "/api/auth/verify/route": "/api/auth/verify",
+  "/api/auth/login/route": "/api/auth/login",
+  "/api/content/route": "/api/content",
   "/about/page": "/about",
-  "/admin/profile/page": "/admin/profile",
   "/admin/page": "/admin",
-  "/page": "/",
+  "/admin/profile/page": "/admin/profile",
+  "/blog/page": "/blog",
   "/projects/page": "/projects",
-  "/blog/page": "/blog"
+  "/page": "/"
 }

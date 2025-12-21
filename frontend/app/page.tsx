@@ -17,12 +17,12 @@ export default function Home() {
         if (data && data.home) {
           setContent(data.home)
         } else {
-          setContent({ title: 'Welcome', content: 'Loading...' })
+          setContent({ title: 'Good Day! Welcome to Zack\'s blog!', content: 'Loading...' })
         }
       })
       .catch(error => {
         console.error('Error fetching content:', error)
-        setContent({ title: 'Welcome to My Website', content: 'Content is loading...' })
+        setContent({ title: 'Good Day! Welcome to Zack\'s blog!', content: 'Content is loading...' })
       })
   }, [])
 
@@ -36,7 +36,10 @@ export default function Home() {
       <div className="relative z-10 flex items-center justify-center min-h-screen px-4">
         <div className="text-center max-w-4xl">
           <h1 className="text-5xl md:text-7xl font-bold text-white mb-8 leading-tight">
-            {content.title}
+            <span className="flex items-center justify-center gap-3 flex-wrap">
+              <span>Good Day! Welcome to Zack&apos;s blog!</span>
+              <span className="wave-hand">👋</span>
+            </span>
           </h1>
           <p className="text-xl md:text-2xl text-white/90 max-w-2xl mx-auto leading-relaxed">
             {content.content}
@@ -50,18 +53,23 @@ export default function Home() {
           <div className="flex items-center space-x-3">
             <div className="w-12 h-12 rounded-full overflow-hidden border-2 border-white/30">
               <img 
-                src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=150&h=150&fit=crop&crop=face" 
-                alt="Profile" 
+                src="/zack-profile.jpg" 
+                alt="Zack" 
                 className="w-full h-full object-cover"
+                onError={(e) => {
+                  // Fallback to a default image if the custom image doesn't exist
+                  (e.target as HTMLImageElement).src = 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=150&h=150&fit=crop&crop=face'
+                }}
               />
             </div>
             <div className="text-right">
-              <div className="font-semibold text-sm">Your Name</div>
+              <div className="font-semibold text-sm">Zack</div>
               <div className="text-xs text-white/70">{new Date().toLocaleDateString()}</div>
             </div>
           </div>
         </div>
       </div>
+
     </div>
   )
 }

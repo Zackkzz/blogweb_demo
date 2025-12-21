@@ -10,6 +10,33 @@
   100% { background-position: 0% 50%; }
 }
 
+@keyframes wave {
+  0%, 100% {
+    transform: rotate(0deg);
+  }
+  10%, 30% {
+    transform: rotate(14deg);
+  }
+  20% {
+    transform: rotate(-8deg);
+  }
+  40%, 60% {
+    transform: rotate(-4deg);
+  }
+  50% {
+    transform: rotate(10deg);
+  }
+  70% {
+    transform: rotate(0deg);
+  }
+}
+
+.wave-hand {
+  display: inline-block;
+  animation: wave 1s ease-in-out infinite;
+  transform-origin: 70% 70%;
+}
+
 .flowing-bg {
   background: linear-gradient(-45deg, 
     #87CEEB 0%, 
