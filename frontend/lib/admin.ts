@@ -5,12 +5,19 @@ import path from 'path';
 const adminFilePath = path.join(process.cwd(), 'data', 'admin.json');
 
 // Default admin credentials
-// Using a fixed hash for 'admin123' password
-const defaultAdmin = {
-  username: 'admin',
-  passwordHash: '$2a$10$bxha7cmwCHl2grssFOqS3uN2q01dX8Pjf3d5.8GG/IsddneU1mB/2',
-  email: 'admin@example.com'
-};
+// Generate hash at module load time to ensure consistency
+const defaultAdmin = (() => {
+  const hash = bcrypt.hashSync('admin123', 10);
+  // Verify the hash is correct
+  if (!bcrypt.compareSync('admin123', hash)) {
+    throw new Error('Failed to generate valid password hash');
+  }
+  return {
+    username: 'admin',
+    passwordHash: hash,
+    email: 'admin@example.com'
+  };
+})();
 
 export interface AdminUser {
   username: string;
