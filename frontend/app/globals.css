@@ -33,7 +33,7 @@
 
 .wave-hand {
   display: inline-block;
-  animation: wave 0.5s ease-in-out infinite;
+  animation: wave 1s ease-in-out infinite;
   transform-origin: 70% 70%;
 }
 

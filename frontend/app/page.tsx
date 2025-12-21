@@ -60,11 +60,17 @@ export default function Home() {
       <div className="absolute bottom-8 right-8 z-20">
         <div className="bg-white/10 backdrop-blur-md rounded-lg p-4 text-white">
           <div className="flex items-center space-x-3">
-            <div className="w-12 h-12 rounded-full overflow-hidden border-2 border-white/30">
+            <div className="w-20 h-20 rounded-full overflow-hidden border-2 border-white/30 flex items-center justify-center bg-gray-800/20">
               <img 
                 src="/profile.jpg" 
                 alt="Zack" 
                 className="w-full h-full object-cover"
+                style={{ 
+                  objectPosition: 'center center',
+                  transform: 'scale(1.3)',
+                  minWidth: '100%',
+                  minHeight: '100%'
+                }}
                 onError={(e) => {
                   // Fallback to default image if the custom image doesn't exist
                   (e.target as HTMLImageElement).src = 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=150&h=150&fit=crop&crop=face';
