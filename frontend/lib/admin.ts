@@ -37,7 +37,18 @@ export interface AdminUser {
 }
 
 // Get admin user from file or return default
+// In serverless environments (Netlify), file system is read-only
+// So we skip file operations and always return the default admin
 export function getAdmin(): AdminUser {
+  // Check if we're in a serverless environment (Netlify uses /var/task)
+  const isServerless = process.cwd().includes('/var/task') || process.env.NETLIFY === 'true';
+  
+  if (isServerless) {
+    // In serverless, skip all file operations and return default
+    return getDefaultAdmin();
+  }
+  
+  // Only try to read file in non-serverless environments
   try {
     if (fs.existsSync(adminFilePath)) {
       const data = fs.readFileSync(adminFilePath, 'utf8');
@@ -47,12 +58,14 @@ export function getAdmin(): AdminUser {
         return admin;
       }
     }
-  } catch (error) {
-    console.error('Error reading admin file:', error);
+  } catch (error: any) {
+    // If read fails, just use default
+    if (error.code !== 'EROFS') {
+      console.error('Error reading admin file:', error);
+    }
   }
   
-  // Return default (don't try to save in serverless environments)
-  // In Netlify/serverless, file system may be read-only
+  // Return default (never try to save file in getAdmin())
   return getDefaultAdmin();
 }
 
