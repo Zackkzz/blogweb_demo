@@ -8,7 +8,7 @@ const adminFilePath = path.join(process.cwd(), 'data', 'admin.json');
 // Using a fixed hash for 'admin123' password
 const defaultAdmin = {
   username: 'admin',
-  passwordHash: '$2a$10$pjrKuaSWAeZZUlT1.pvhAeqkRkho/vKwyknrTvXEOGpVIgL1gjXgS',
+  passwordHash: '$2a$10$bxha7cmwCHl2grssFOqS3uN2q01dX8Pjf3d5.8GG/IsddneU1mB/2',
   email: 'admin@example.com'
 };
 
