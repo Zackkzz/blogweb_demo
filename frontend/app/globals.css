@@ -33,8 +33,14 @@
 
 .wave-hand {
   display: inline-block;
-  animation: wave 1s ease-in-out infinite;
+  animation: wave 0.5s ease-in-out infinite;
   transform-origin: 70% 70%;
+}
+
+/* After 3 seconds, stop the animation */
+.wave-hand.stopped {
+  animation: none;
+  transform: rotate(0deg);
 }
 
 .flowing-bg {

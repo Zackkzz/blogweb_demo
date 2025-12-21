@@ -4,6 +4,7 @@ import { useEffect, useState } from 'react'
 
 export default function Home() {
   const [content, setContent] = useState<{ title: string; content: string }>({ title: '', content: '' })
+  const [waveStopped, setWaveStopped] = useState(false)
 
   useEffect(() => {
     fetch('/api/content')
@@ -26,6 +27,14 @@ export default function Home() {
       })
   }, [])
 
+  // Stop waving animation after 3 seconds
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setWaveStopped(true)
+    }, 3000)
+    return () => clearTimeout(timer)
+  }, [])
+
   return (
     <div className="relative min-h-screen bg-cover bg-center bg-no-repeat" 
          style={{ backgroundImage: 'url(https://images.unsplash.com/photo-1518837695005-2083093ee35b?w=1920&h=1080&fit=crop&crop=center)' }}>
@@ -38,7 +47,7 @@ export default function Home() {
           <h1 className="text-5xl md:text-7xl font-bold text-white mb-8 leading-tight">
             <span className="flex items-center justify-center gap-3 flex-wrap">
               <span>Good Day! Welcome to Zack&apos;s blog!</span>
-              <span className="wave-hand">👋</span>
+              <span className={`wave-hand ${waveStopped ? 'stopped' : ''}`}>👋</span>
             </span>
           </h1>
           <p className="text-xl md:text-2xl text-white/90 max-w-2xl mx-auto leading-relaxed">
