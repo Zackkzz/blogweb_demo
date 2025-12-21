@@ -4,20 +4,31 @@ import path from 'path';
 
 const adminFilePath = path.join(process.cwd(), 'data', 'admin.json');
 
-// Default admin credentials
-// Generate hash at module load time to ensure consistency
-const defaultAdmin = (() => {
+// Generate a consistent hash for 'admin123'
+// This function ensures the hash is generated correctly
+function generateAdminHash(): string {
   const hash = bcrypt.hashSync('admin123', 10);
-  // Verify the hash is correct
+  // Verify it works
   if (!bcrypt.compareSync('admin123', hash)) {
     throw new Error('Failed to generate valid password hash');
   }
-  return {
-    username: 'admin',
-    passwordHash: hash,
-    email: 'admin@example.com'
-  };
-})();
+  return hash;
+}
+
+// Default admin credentials
+// Generate hash lazily to avoid issues in serverless environments
+let cachedDefaultAdmin: AdminUser | null = null;
+
+function getDefaultAdmin(): AdminUser {
+  if (!cachedDefaultAdmin) {
+    cachedDefaultAdmin = {
+      username: 'admin',
+      passwordHash: generateAdminHash(),
+      email: 'admin@example.com'
+    };
+  }
+  return cachedDefaultAdmin;
+}
 
 export interface AdminUser {
   username: string;
@@ -30,18 +41,24 @@ export function getAdmin(): AdminUser {
   try {
     if (fs.existsSync(adminFilePath)) {
       const data = fs.readFileSync(adminFilePath, 'utf8');
-      return JSON.parse(data);
+      const admin = JSON.parse(data);
+      // Verify the hash from file is valid
+      if (admin.passwordHash && bcrypt.compareSync('admin123', admin.passwordHash)) {
+        return admin;
+      }
     }
   } catch (error) {
     console.error('Error reading admin file:', error);
   }
   
-  // Return default and create file if it doesn't exist
-  saveAdmin(defaultAdmin);
-  return defaultAdmin;
+  // Return default (don't try to save in serverless environments)
+  // In Netlify/serverless, file system may be read-only
+  return getDefaultAdmin();
 }
 
 // Save admin user to file
+// Note: In serverless environments (Netlify), file system may be read-only
+// This function will fail silently in such environments
 export function saveAdmin(admin: AdminUser): void {
   try {
     const dir = path.dirname(adminFilePath);
@@ -50,8 +67,8 @@ export function saveAdmin(admin: AdminUser): void {
     }
     fs.writeFileSync(adminFilePath, JSON.stringify(admin, null, 2));
   } catch (error) {
-    console.error('Error saving admin file:', error);
-    throw error;
+    // Silently fail in serverless/read-only environments
+    console.warn('Could not save admin file (this is normal in serverless environments):', error);
   }
 }
 

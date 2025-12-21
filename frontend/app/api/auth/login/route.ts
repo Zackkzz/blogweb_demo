@@ -8,20 +8,32 @@ export async function POST(request: NextRequest) {
   try {
     const { username, password } = await request.json();
     
-    const admin = getAdmin();
+    if (!username || !password) {
+      return NextResponse.json({ error: 'Username and password are required' }, { status: 400 });
+    }
     
-    // Debug logging (remove in production)
-    console.log('Login attempt:', { username, adminUsername: admin.username, adminEmail: admin.email });
+    let admin;
+    try {
+      admin = getAdmin();
+    } catch (error: any) {
+      console.error('Error getting admin:', error);
+      return NextResponse.json({ error: 'Server configuration error' }, { status: 500 });
+    }
     
     // Check if username or email matches
     if (username !== admin.username && username !== admin.email) {
-      console.log('Username/email mismatch');
       return NextResponse.json({ error: 'Invalid credentials' }, { status: 401 });
     }
     
     // Verify password
-    const passwordValid = verifyPassword(password, admin.passwordHash);
-    console.log('Password verification:', passwordValid);
+    let passwordValid = false;
+    try {
+      passwordValid = verifyPassword(password, admin.passwordHash);
+    } catch (error: any) {
+      console.error('Error verifying password:', error);
+      return NextResponse.json({ error: 'Password verification failed' }, { status: 500 });
+    }
+    
     if (!passwordValid) {
       return NextResponse.json({ error: 'Invalid credentials' }, { status: 401 });
     }
@@ -36,6 +48,6 @@ export async function POST(request: NextRequest) {
     return NextResponse.json({ token });
   } catch (error: any) {
     console.error('Login error:', error);
-    return NextResponse.json({ error: 'Login failed' }, { status: 500 });
+    return NextResponse.json({ error: 'Login failed', details: error.message }, { status: 500 });
   }
 }
