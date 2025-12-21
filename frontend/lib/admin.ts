@@ -70,18 +70,29 @@ export function getAdmin(): AdminUser {
 }
 
 // Save admin user to file
-// Note: In serverless environments (Netlify), file system may be read-only
-// This function will fail silently in such environments
+// Note: In serverless environments (Netlify), file system is read-only
+// This function will fail silently in such environments and never throw errors
 export function saveAdmin(admin: AdminUser): void {
+  // Check if we're in a serverless environment
+  const isServerless = process.cwd().includes('/var/task') || process.env.NETLIFY === 'true';
+  
+  if (isServerless) {
+    // In serverless, don't even try to write files
+    return;
+  }
+  
   try {
     const dir = path.dirname(adminFilePath);
     if (!fs.existsSync(dir)) {
       fs.mkdirSync(dir, { recursive: true });
     }
     fs.writeFileSync(adminFilePath, JSON.stringify(admin, null, 2));
-  } catch (error) {
+  } catch (error: any) {
     // Silently fail in serverless/read-only environments
-    console.warn('Could not save admin file (this is normal in serverless environments):', error);
+    // Never throw errors - this is expected in serverless environments
+    if (error.code !== 'EROFS') {
+      console.warn('Could not save admin file (this is normal in serverless environments):', error.message || error);
+    }
   }
 }
 
