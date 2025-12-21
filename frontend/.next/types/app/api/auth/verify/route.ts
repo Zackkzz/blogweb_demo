@@ -1,4 +1,4 @@
-// File: d:\project\demo\frontend\app\api\auth\verify\route.ts
+// File: D:\project\demo\frontend\app\api\auth\verify\route.ts
 import * as entry from '../../../../../../app/api/auth/verify/route.js'
 import type { NextRequest } from 'next/server.js'
 
