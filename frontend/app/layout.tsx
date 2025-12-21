@@ -19,9 +19,10 @@ export default function RootLayout({
     <html lang="en">
       <body className={`${inter.className} bg-white text-black`}>
         {/* Header Section */}
-        <header className="flowing-bg border-b border-gray-200 overflow-hidden relative">
-          {/* First Row - Logo and Icons */}
-          <div className="container mx-auto px-4 py-3 flex justify-between items-center">
+        <header className="overflow-hidden relative">
+          {/* First Row - Logo and Icons - Dark Gray with Flowing Effect */}
+          <div className="bg-gray-800 flowing-gray-bg border-b border-gray-700 overflow-hidden relative">
+            <div className="container mx-auto px-4 py-3 flex justify-between items-center relative z-10">
             <div className="flex items-center">
               <Link href="/" className="flex items-center space-x-2">
                 <div className="relative">
@@ -51,10 +52,9 @@ export default function RootLayout({
                     </div>
                   </div>
                 </div>
-                <span className="text-2xl font-bold text-gray-800"
+                <span className="text-2xl font-bold text-white"
                       style={{
                         fontFamily: '"Montserrat", "Helvetica Neue", "Arial", sans-serif',
-                        textShadow: '1px 1px 2px rgba(255,255,255,0.8), 1px 1px 1px rgba(0,0,0,0.2)',
                         fontWeight: '700'
                       }}>
                   Zack&apos;s blog
@@ -67,40 +67,36 @@ export default function RootLayout({
               <span className="animate-bounce" style={{animationDelay: '0.5s'}}>🌉</span>
               <span className="animate-pulse" style={{animationDelay: '1s'}}>🏝️</span>
             </div>
+            </div>
           </div>
           
-          {/* Second Row - Navigation */}
-          <nav className="bg-white/10 backdrop-blur-md border-b border-white/20">
+          {/* Second Row - Navigation - White */}
+          <nav className="bg-white border-b border-gray-200">
             <div className="container mx-auto px-4 py-3">
               <div className="flex justify-center space-x-8">
-                <Link href="/" className="px-6 py-3 border border-white/30 rounded-md bg-white/5 shadow-sm hover:bg-blue-500/20 hover:border-blue-400/50 hover:shadow-md transition-all duration-300 font-bold text-white"
+                <Link href="/" className="px-6 py-3 border border-gray-300 rounded-md bg-transparent shadow-sm hover:bg-gray-100 hover:border-gray-400 hover:shadow-md transition-all duration-300 font-bold text-gray-800"
                       style={{
                         fontFamily: '"Montserrat", "Helvetica Neue", "Arial", sans-serif',
-                        textShadow: '1px 1px 2px rgba(0,0,0,0.5), 1px 1px 1px rgba(0,0,0,0.3)',
                         fontWeight: '600'
                       }}>Home</Link>
-                <Link href="/about" className="px-6 py-3 border border-white/30 rounded-md bg-white/5 shadow-sm hover:bg-blue-500/20 hover:border-blue-400/50 hover:shadow-md transition-all duration-300 font-bold text-white"
+                <Link href="/about" className="px-6 py-3 border border-gray-300 rounded-md bg-transparent shadow-sm hover:bg-gray-100 hover:border-gray-400 hover:shadow-md transition-all duration-300 font-bold text-gray-800"
                       style={{
                         fontFamily: '"Montserrat", "Helvetica Neue", "Arial", sans-serif',
-                        textShadow: '1px 1px 2px rgba(0,0,0,0.5), 1px 1px 1px rgba(0,0,0,0.3)',
                         fontWeight: '600'
                       }}>About</Link>
-                <Link href="/projects" className="px-6 py-3 border border-white/30 rounded-md bg-white/5 shadow-sm hover:bg-blue-500/20 hover:border-blue-400/50 hover:shadow-md transition-all duration-300 font-bold text-white"
+                <Link href="/projects" className="px-6 py-3 border border-gray-300 rounded-md bg-transparent shadow-sm hover:bg-gray-100 hover:border-gray-400 hover:shadow-md transition-all duration-300 font-bold text-gray-800"
                       style={{
                         fontFamily: '"Montserrat", "Helvetica Neue", "Arial", sans-serif',
-                        textShadow: '1px 1px 2px rgba(0,0,0,0.5), 1px 1px 1px rgba(0,0,0,0.3)',
                         fontWeight: '600'
                       }}>Projects</Link>
-                <Link href="/blog" className="px-6 py-3 border border-white/30 rounded-md bg-white/5 shadow-sm hover:bg-blue-500/20 hover:border-blue-400/50 hover:shadow-md transition-all duration-300 font-bold text-white"
+                <Link href="/blog" className="px-6 py-3 border border-gray-300 rounded-md bg-transparent shadow-sm hover:bg-gray-100 hover:border-gray-400 hover:shadow-md transition-all duration-300 font-bold text-gray-800"
                       style={{
                         fontFamily: '"Montserrat", "Helvetica Neue", "Arial", sans-serif',
-                        textShadow: '1px 1px 2px rgba(0,0,0,0.5), 1px 1px 1px rgba(0,0,0,0.3)',
                         fontWeight: '600'
                       }}>Blog</Link>
-                <Link href="/admin" className="px-6 py-3 border border-white/30 rounded-md bg-white/5 shadow-sm hover:bg-blue-500/20 hover:border-blue-400/50 hover:shadow-md transition-all duration-300 font-bold text-white"
+                <Link href="/admin" className="px-6 py-3 border border-gray-300 rounded-md bg-transparent shadow-sm hover:bg-gray-100 hover:border-gray-400 hover:shadow-md transition-all duration-300 font-bold text-gray-800"
                       style={{
                         fontFamily: '"Montserrat", "Helvetica Neue", "Arial", sans-serif',
-                        textShadow: '1px 1px 2px rgba(0,0,0,0.5), 1px 1px 1px rgba(0,0,0,0.3)',
                         fontWeight: '600'
                       }}>Admin</Link>
               </div>

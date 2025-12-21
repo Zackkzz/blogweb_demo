@@ -54,6 +54,17 @@
   animation: flowingBackground 12s ease-in-out infinite;
 }
 
+.flowing-gray-bg {
+  background: linear-gradient(-45deg, 
+    #4a5568 0%, 
+    #2d3748 25%, 
+    #1a202c 50%, 
+    #2d3748 75%, 
+    #4a5568 100%);
+  background-size: 300% 300%;
+  animation: flowingBackground 12s ease-in-out infinite;
+}
+
 :root {
   --foreground-rgb: 0, 0, 0;
   --background-start-rgb: 255, 255, 255;
