@@ -5,20 +5,59 @@ import jwt from 'jsonwebtoken'
 
 const JWT_SECRET = process.env.JWT_SECRET || 'change-me-in-env'
 
-const dataPath = path.join(process.cwd(), 'data', 'content.json')
+// Get the correct data path - handle both development and production
+const getDataPath = () => {
+  const basePath = process.cwd()
+  // In Next.js, during build/runtime, cwd might be different
+  // Try frontend/data first, then data
+  const paths = [
+    path.join(basePath, 'frontend', 'data', 'content.json'),
+    path.join(basePath, 'data', 'content.json'),
+  ]
+  for (const p of paths) {
+    if (fs.existsSync(p)) {
+      return p
+    }
+  }
+  // Return default path
+  return path.join(basePath, 'frontend', 'data', 'content.json')
+}
+
+const dataPath = getDataPath()
 
 // Default content structure
 const defaultContent = {
   home: {
-    title: 'Good Day! Welcome to Zack\'s blog!',
-    content: 'This is the home page content. You can edit this from the admin panel.'
+    title: 'Good Day! Welcome to Zack space!',
+    content: 'This is the home page content. You can edit this from the admin panel.',
+    backgroundImage: '/scroll/757c36f4d3c685ebf384a0c9f3d8d067.jpg'
   },
   about: {
     title: 'About Me',
-    content: 'I am a passionate developer with experience in various technologies. This content can be edited from the admin panel.'
+    content: 'I am a passionate developer with experience in various technologies. This content can be edited from the admin panel.',
+    name: '',
+    position: '',
+    email: '',
+    phone: '',
+    location: '',
+    summary: '',
+    photo: ''
+  },
+  contact: {
+    email: '',
+    github: '',
+    linkedin: '',
+    twitter: '',
+    website: ''
   },
   projects: [],
-  blog: []
+  blog: [],
+  experience: [],
+  education: {
+    title: 'Education',
+    content: '',
+    icon: ''
+  }
 }
 
 export async function GET() {

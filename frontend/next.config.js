@@ -8,6 +8,8 @@ const nextConfig = {
     minimumCacheTTL: 60,
     // Disable image optimization for local images if needed, or configure properly
     unoptimized: false,
+    // Allow favicon images
+    remotePatterns: [],
   },
 }
 module.exports = nextConfig

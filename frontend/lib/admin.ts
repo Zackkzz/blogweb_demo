@@ -2,7 +2,25 @@ import bcrypt from 'bcryptjs';
 import fs from 'fs';
 import path from 'path';
 
-const adminFilePath = path.join(process.cwd(), 'data', 'admin.json');
+// Get the correct admin file path - handle both development and production
+const getAdminFilePath = () => {
+  const basePath = process.cwd()
+  // In Next.js, during build/runtime, cwd might be different
+  // Try frontend/data first, then data
+  const paths = [
+    path.join(basePath, 'frontend', 'data', 'admin.json'),
+    path.join(basePath, 'data', 'admin.json'),
+  ]
+  for (const p of paths) {
+    if (fs.existsSync(p)) {
+      return p
+    }
+  }
+  // Return default path
+  return path.join(basePath, 'frontend', 'data', 'admin.json')
+}
+
+const adminFilePath = getAdminFilePath();
 
 // Generate a consistent hash for 'admin123'
 // This function ensures the hash is generated correctly

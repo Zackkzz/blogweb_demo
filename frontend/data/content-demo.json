@@ -1,0 +1,48 @@
+{
+  "home": {
+    "title": "Good Day! Welcome to My Space!",
+    "content": "",
+    "backgroundImage": "/scroll/757c36f4d3c685ebf384a0c9f3d8d067.jpg"
+  },
+  "about": {
+    "title": "About Me",
+    "content": "<ul>\n<li>Computer Science student with experience in software development.</li>\n<li>Familiar with backend techniques, proficient in various programming languages.</li>\n<li>Have a strong understanding of data structures and algorithms.</li>\n<li>Experience in software construction through teamwork and individually.</li>\n<li>Mainly use modern web technologies for backend implementation.</li>\n<li>Experience in testing and following CI/CD pipeline practices.</li>\n<li>Self-motivated person with a strong commitment to growth.</li>\n<li>Curious mind with an eagerness to learn.</li>\n<li>Proven collaboration, attention to detail, and troubleshooting skills.</li>\n</ul>",
+    "name": "Your Name",
+    "position": "Computer Science Student",
+    "email": "your.email@example.com",
+    "phone": "",
+    "location": "",
+    "summary": "Computer Science student with strong backend development skills and experience in software construction.",
+    "photo": "/profile.jpg"
+  },
+  "contact": {
+    "email": "your.email@example.com",
+    "github": "https://github.com/yourusername",
+    "linkedin": "",
+    "twitter": "",
+    "website": ""
+  },
+  "projects": [
+    {
+      "title": "Personal Blog Website",
+      "description": "<ul>\n<li>A modern personal website built with Next.js 15, featuring a beautiful UI with Tailwind CSS and an admin panel for content management.</li>\n<li>Features include beautiful gradient background animations, glassmorphism navigation design, and fully responsive layout.</li>\n<li>Admin panel for content management with local file-based storage (no database required).</li>\n<li>Built with Next.js 15, TypeScript, Tailwind CSS, and JWT authentication.</li>\n<li>Deployed on Netlify with serverless architecture support.</li>\n</ul>",
+      "link": "https://github.com/LinghuCh0ng/blogweb_demo",
+      "image": "https://github.githubassets.com/favicons/favicon.png"
+    }
+  ],
+  "blog": [
+    {
+      "id": "welcome",
+      "title": "Welcome to My Website!",
+      "content": "<p>Welcome to my personal website! I'm thrilled to have you here.</p>\n\n<p>This website serves as a comprehensive showcase of my journey, experiences, and projects in the field of computer science. Here's what you'll find:</p>\n\n<ul>\n<li><strong>About Me</strong>: Learn more about my background, skills, and interests.</li>\n<li><strong>Experience</strong>: Explore my work experience, educational journey, and projects in a timeline format.</li>\n<li><strong>Education</strong>: Discover my academic journey and the courses I've completed.</li>\n<li><strong>Projects</strong>: Browse through my portfolio of software development projects.</li>\n<li><strong>Blog</strong>: Read my thoughts, updates, and insights on technology and programming.</li>\n</ul>\n\n<p>Feel free to explore the different sections of this website, and don't hesitate to reach out if you'd like to connect or collaborate.</p>\n\n<p>Thank you for visiting, and I hope you enjoy exploring my work!</p>",
+      "date": "2025-01-15"
+    }
+  ],
+  "experience": [],
+  "education": {
+    "title": "Education",
+    "description": "My academic journey in computer science, focusing on backend development, software engineering, and practical application of programming skills.",
+    "items": []
+  }
+}
+
