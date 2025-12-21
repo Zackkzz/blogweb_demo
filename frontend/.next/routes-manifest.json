@@ -39,18 +39,6 @@
       "namedRegex": "^/about(?:/)?$"
     },
     {
-      "page": "/admin",
-      "regex": "^/admin(?:/)?$",
-      "routeKeys": {},
-      "namedRegex": "^/admin(?:/)?$"
-    },
-    {
-      "page": "/admin/profile",
-      "regex": "^/admin/profile(?:/)?$",
-      "routeKeys": {},
-      "namedRegex": "^/admin/profile(?:/)?$"
-    },
-    {
       "page": "/blog",
       "regex": "^/blog(?:/)?$",
       "routeKeys": {},

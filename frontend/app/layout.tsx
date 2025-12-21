@@ -94,11 +94,6 @@ export default function RootLayout({
                         fontFamily: '"Montserrat", "Helvetica Neue", "Arial", sans-serif',
                         fontWeight: '600'
                       }}>Blog</Link>
-                <Link href="/admin" className="px-6 py-3 border border-gray-300 rounded-md bg-transparent shadow-sm hover:bg-gray-100 hover:border-gray-400 hover:shadow-md transition-all duration-300 font-bold text-gray-800"
-                      style={{
-                        fontFamily: '"Montserrat", "Helvetica Neue", "Arial", sans-serif',
-                        fontWeight: '600'
-                      }}>Admin</Link>
               </div>
             </div>
           </nav>
