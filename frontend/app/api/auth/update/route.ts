@@ -1,6 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server';
-import { getDb } from '@/lib/db';
-import bcrypt from 'bcryptjs';
+import { getAdmin, saveAdmin, verifyPassword, hashPassword } from '@/lib/admin';
 import jwt from 'jsonwebtoken';
 
 const JWT_SECRET = process.env.JWT_SECRET || 'change-me-in-env';
@@ -12,34 +11,28 @@ export async function POST(request: NextRequest) {
     if (!token) return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
 
     const decoded: any = jwt.verify(token, JWT_SECRET);
-    const conn = await getDb();
+    const admin = getAdmin();
 
-    const [rows] = await conn.execute('SELECT * FROM zack WHERE id = ?', [decoded.id]);
-    const user = (rows as any[])[0];
-    if (!user || !bcrypt.compareSync(currentPassword, user.password_hash)) {
+    // Verify current password
+    if (!verifyPassword(currentPassword, admin.passwordHash)) {
       return NextResponse.json({ error: 'Invalid current password' }, { status: 400 });
     }
 
-    const updates = [] as string[];
-    const values = [] as any[];
+    // Update admin info
+    const updatedAdmin = { ...admin };
+    
     if (newUsername) {
-      updates.push('username = ?');
-      values.push(newUsername);
+      updatedAdmin.username = newUsername;
     }
     if (newPassword) {
-      const hash = bcrypt.hashSync(newPassword, 10);
-      updates.push('password_hash = ?');
-      values.push(hash);
+      updatedAdmin.passwordHash = hashPassword(newPassword);
     }
     if (newEmail) {
-      updates.push('email = ?');
-      values.push(newEmail);
+      updatedAdmin.email = newEmail;
     }
 
-    if (updates.length > 0) {
-      values.push(decoded.id);
-      await conn.execute(`UPDATE zack SET ${updates.join(', ')} WHERE id = ?`, values);
-    }
+    // Save updated admin
+    saveAdmin(updatedAdmin);
 
     return NextResponse.json({ success: true });
   } catch (error) {

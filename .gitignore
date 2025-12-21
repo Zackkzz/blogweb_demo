@@ -26,6 +26,9 @@ yarn-error.log*
 .env*.local
 .env
 
+# Admin credentials (sensitive)
+frontend/data/admin.json
+
 # Vercel
 .vercel
 

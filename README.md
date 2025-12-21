@@ -1,15 +1,14 @@
-# Zack's Personal Blog Website
+# Personal Blog Website
 
-A modern personal website organized as frontend and backend folders, built with Next.js 15, featuring a coding capybara logo and glassmorphism navigation design.
+A modern personal website built with Next.js 15, featuring a beautiful UI with Tailwind CSS and an admin panel for content management.
 
 ## ✨ Features
 
-- 🦫 Custom capybara coding logo
-- 🌊 Flowing blue gradient background animation
+- 🌊 Beautiful gradient background animations
 - 🪟 Glassmorphism navigation design
 - 📱 Fully responsive layout
 - 🔐 Admin panel for content management
-- 💾 MySQL database support
+- 💾 Local file-based storage (no database required)
 - 🎨 Beautiful UI with Tailwind CSS
 
 ## 🗂 Project Structure
@@ -17,9 +16,10 @@ A modern personal website organized as frontend and backend folders, built with 
 ```
 root/
 	frontend/            # Next.js app (pages, UI, API routes)
-	backend/             # Database utilities and SQL dump
-		db.ts              # MySQL connection + initialization
-		web.sql            # Example SQL dump
+		app/              # Next.js app directory
+		data/             # Local data storage (content.json, admin.json)
+		lib/              # Utility functions
+	backend/             # Legacy database files (not used)
 	netlify.toml         # Netlify build configuration
 ```
 
@@ -27,21 +27,20 @@ root/
 
 1. Install dependencies:
 ```bash
+cd frontend
 npm install
 ```
 
-2. Set up environment variables (Netlify dashboard or local `.env.local`):
-
-Required for DB connection (Railway via TCP proxy):
-- `DB_HOST` = `crossover.proxy.rlwy.net`
-- `DB_PORT` = `<RAILWAY_TCP_PROXY_PORT>` (e.g. 44546)
-- `DB_USER` = `<MYSQLUSER>` (e.g. root)
-- `DB_PASSWORD` = `<MYSQLPASSWORD>`
-- `DB_NAME` = `<MYSQLDATABASE>` (e.g. railway)
-- `JWT_SECRET` = `<your-secure-random-string>`
+2. Set up admin credentials (optional):
+- Copy `frontend/data/admin.json.example` to `frontend/data/admin.json`
+- Default credentials:
+  - Username: `admin`
+  - Password: `admin123`
+  - Email: `admin@example.com`
 
 3. Run the development server:
 ```bash
+cd frontend
 npm run dev
 ```
 
@@ -53,8 +52,8 @@ npm run dev
 
 - **Framework**: Next.js 15
 - **Styling**: Tailwind CSS
-- **Database**: MySQL
-- **Authentication**: JWT
+- **Authentication**: JWT (local file-based)
+- **Storage**: Local JSON files
 - **Language**: TypeScript
 
 ## 📄 Pages
@@ -65,10 +64,14 @@ npm run dev
 - **Blog**: Blog posts listing
 - **Admin**: Content management panel
 
-All content is dynamically managed through the admin panel and stored in the database.
+All content is dynamically managed through the admin panel and stored in local JSON files.
 
 ## 🌐 Deploy on Netlify
 
-- The repo includes `netlify.toml`. Set environment variables in Netlify → Site settings → Environment.
-- Build command: `npm run build`
-- Publish directory: `.next` (or configure base as `frontend/` if you move the Next app inside that folder)
+1. Push your code to GitHub
+2. Connect your repository to Netlify
+3. Set environment variable (optional):
+   - `JWT_SECRET` = A secure random string (for JWT token signing)
+4. Deploy!
+
+The `netlify.toml` file is already configured. No database setup required!
