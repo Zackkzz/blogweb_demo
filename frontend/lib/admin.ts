@@ -5,9 +5,10 @@ import path from 'path';
 const adminFilePath = path.join(process.cwd(), 'data', 'admin.json');
 
 // Default admin credentials
+// Using a fixed hash for 'admin123' password
 const defaultAdmin = {
   username: 'admin',
-  passwordHash: bcrypt.hashSync('admin123', 10),
+  passwordHash: '$2a$10$spJGo2SF4h.gLVKDkkVKdeGUwX1xdts8ZI5mmyGWms4bYrHx6Laj.',
   email: 'admin@example.com'
 };
 
