@@ -109,7 +109,6 @@ export default function Admin() {
           {loginError && <p className="text-red-500">{loginError}</p>}
           <button type="submit" className="bg-blue-500 text-white px-4 py-2">Login</button>
         </form>
-        <p className="mt-4">Default admin: username or email &apos;admin&apos;, password &apos;admin123&apos;</p>
       </div>
     )
   }
