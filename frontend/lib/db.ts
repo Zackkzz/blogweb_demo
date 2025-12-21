@@ -1,6 +1,7 @@
 import mysql from 'mysql2/promise';
 import bcrypt from 'bcryptjs';
 
+let connection: mysql.Connection | null = null;
 let connectionPromise: Promise<mysql.Connection> | null = null;
 
 export async function getDb() {
@@ -15,9 +16,38 @@ export async function getDb() {
     throw new Error('Database environment not configured');
   }
 
-  if (!connectionPromise) {
-    connectionPromise = mysql.createConnection({ host, port, user, password, database });
+  // If we have an active connection, check if it's still alive
+  if (connection) {
+    try {
+      await connection.ping();
+      return connection;
+    } catch (error) {
+      // Connection is dead, reset it
+      connection = null;
+      connectionPromise = null;
+    }
   }
+
+  // Create new connection if we don't have one
+  if (!connectionPromise) {
+    connectionPromise = mysql.createConnection({ 
+      host, 
+      port, 
+      user, 
+      password, 
+      database,
+      connectTimeout: 10000, // 10 second timeout
+    }).then(conn => {
+      connection = conn;
+      return conn;
+    }).catch(error => {
+      // Reset promise on error so we can retry
+      connectionPromise = null;
+      connection = null;
+      throw error;
+    });
+  }
+  
   return connectionPromise;
 }
 
