@@ -1,12 +1,12 @@
 {
-  "/api/auth/update/route": "/api/auth/update",
-  "/api/content/route": "/api/content",
   "/_not-found/page": "/_not-found",
   "/api/auth/login/route": "/api/auth/login",
   "/api/auth/verify/route": "/api/auth/verify",
+  "/api/content/route": "/api/content",
+  "/api/auth/update/route": "/api/auth/update",
   "/about/page": "/about",
+  "/page": "/",
   "/projects/page": "/projects",
-  "/admin/page": "/admin",
   "/blog/page": "/blog",
-  "/page": "/"
+  "/admin/page": "/admin"
 }

@@ -1,7 +1,7 @@
 import type { Metadata } from 'next'
 import { Inter } from 'next/font/google'
 import Link from 'next/link'
-import ZackCodeLogo from '@/components/ZackCodeLogo'
+import Image from 'next/image'
 import './globals.css'
 
 const inter = Inter({ subsets: ['latin'] })
@@ -26,7 +26,17 @@ export default function RootLayout({
             <div className="container mx-auto px-4 py-3 flex justify-between items-center relative z-10">
             <div className="flex items-center">
               <Link href="/" className="flex items-center">
-                <ZackCodeLogo size="small" color="white" />
+                <div className="relative h-12 w-auto">
+                  <Image
+                    src="/logo/zack-code-high-resolution-logo (2).png"
+                    alt="ZACK CODE Logo"
+                    width={200}
+                    height={80}
+                    className="h-full w-auto object-contain"
+                    priority
+                    style={{ filter: 'brightness(0) invert(1)' }}
+                  />
+                </div>
               </Link>
             </div>
             <div className="flex items-center space-x-3 text-xl">
